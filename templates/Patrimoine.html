@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patrimoine.css') }}">
+    <title>Document</title>
+</head>
+<body>
+ <header>
+  {%include "navbar.html" %}
+ </header>
+    <!--formulaire du patrimoine-->
+<main class="content" >
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>enregistrement de patrimoine</h1>
+    <form action="{{url_for('traitement')}}" method="post">
+         
+        <p>*** patrimoine***</p>
+        <label for="nomP">Nom:</label><br> <input type="text" name="nom_patrimoine" id="nomP" required><br><br>
+        <label for="typeP">type:</label><br> <input type="text" name="type_patrimoine" required id="typeP"><br><br>
+        <label for="descP">description:</label><br> <textarea name="description_patrimoine" id="descP"  rows="6" cols="55"></textarea><br><br>
+         <label for="laP">Latitude:</label><br> <input type="number" step="any" name="latitude_patrimoine" required min="-90" max="90" id="laP"><br>
+
+          <label for="lonP">Longitude:</label><br> <input type="number" step="any"  name="longitude_patrimoine" min="-180" id="lonP" max="180"required
+           ><br><br>
+          <p>**villes**</p>
+              <label for="nomV">nom:</label><br> <input type="text" name="nom_ville"required id="nomV"><br><br>
+           <!--  <label for="descV">Description:</label><br><textarea name="description_ville" id="descV" rows="6" cols="55" req></textarea><br><br>
+                <label for="laV">Latitude:</label><br> <input type="number" name="latitude_ville" step="any" min="-90" max="" id="laV" required><br><br>
+               <label for="lonV">Longitude:</label><br> <input type="number" name="longitude_ville" step="any" id="lonV" min="-180" max="180" required><br><br><br>--> 
+            
+         </p>
+         <div class="bouton_formulaire">
+            <button type="submit" class="bouton" >soumettre</button><br> 
+          <button type="reset" class="bouton">annuler</button>
+
+         </div>
+         
+
+   </form ><br><br>
+   <button class="commencer" style="background-color: rgb(120, 224, 120);"><a href="{{url_for('liste_patrimoine')}}">afficher la liste des patrimoine</a></button>
+    
+
+        
+    
+        
+</main>
+</body>
+</html>

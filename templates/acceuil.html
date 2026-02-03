@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patrimoine.css') }}">
+    <title>acceuil</title>
+</head>
+<body>
+  <header>
+ {% include "navbar.html" %}
+
+  </header>
+  <main class="content">
+    <div class="introduction">
+    <div><img src="{{url_for('static', filename='images/image1.jpg')}}" alt=""></div> 
+    <div><img src="{{url_for('static', filename='images/image2.jpg')}}" alt=""></div> 
+    <div><img src="{{url_for('static', filename='images/image3.jpg')}}" alt=""></div> 
+    <div><img src="{{url_for('static', filename='images/image4.jpg')}}" alt=""></div> 
+    <div><img src="{{url_for('static', filename='images/image5.jpg')}}" alt=""></div> 
+    <div><img src="{{url_for('static', filename='images/image6.jpg')}}" alt=""></div> 
+    
+     
+   
+
+    </div>
+     <div class="text">
+      <h1>BIENVENUE</h1>
+      <p>
+        Cette plateforme est dédiée l’enregistrement, à la valorisation et à la géolocalisation du patrimoine. Elle permet de conserver des informations fiables sur les sites, biens et éléments culturels, tout en facilitant leur localisation précise sur une carte. L’objectif est de préserver la mémoire patrimoniale, d’en améliorer l’accès et de contribuer à sa transmission aux générations futures.
+      </p>
+    </div><br><br>
+    <div >
+      <button class="commencer"><a href="{{url_for('patrimoine')}}">COMMENCER</a></button>
+    </div>
+    
+  </main>
+   
+  
+   
+</body>
+</html>

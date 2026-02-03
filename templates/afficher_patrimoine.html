@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patrimoine.css') }}">
+    <title>Document</title>
+</head>
+<body>
+  <header>
+  {%include "navbar.html" %}
+ </header>
+
+ <main class="content">
+    <h1 style="text-align: center;">LISTE DES PATRIMOINES </h1>
+    {%if liste_patrimoine%}
+
+    <table style="border: solid 1px black; border-collapse: collapse;">
+        <tr>
+            <th>Patrimoine</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Description</th>
+            <th>Ville</th>
+            <th>carte</th>
+        </tr>
+        {% for element in liste_patrimoine%}
+        <tr>
+            <td>{{element['Nom_Patrimoine']}}</td>
+            <td>{{element['Longitude_Patrimoine']}}</td>
+            <td>{{element['Latitude_Patrimoine']}}</td>
+            <td>{{element['Description_Patrimoine'] or "description non renseigne"}}</td>
+            <td>{{element['Nom_Ville']}}</td>
+            <td><a href="{{url_for('afficher_carte',Lo=element['Longitude_Patrimoine'], La=element['Latitude_Patrimoine'],No_p=element['Nom_Patrimoine'])}}">
+                <button>voir la carte</button>
+            </a></td>
+            
+        </tr>
+    {%endfor%}
+    </table><br><br>
+    {%else%}
+    <h2>aucun patrimoine enregistre</h2><br><br>
+    {%endif%}
+    <h1 style="text-align: center;">LISTE DES TYPES</h1>
+
+    {%if liste_type%}
+    <table style="border: solid 1px black; border-collapse: collapse;">
+        <tr>
+            <th>type de patrimoine</th>
+           
+        </tr>
+        {% for element in liste_type%}
+        
+        <tr>
+            <td>{{element['Libelle']}}</td>
+           
+        </tr>
+        {%endfor%}
+    {%else%}
+        <h2>aucun type enregistre</h2><br><br>
+     {%endif%}
+      
+        
+   
+
+ </main>
+    
+</body>
+</html>
